@@ -17,7 +17,7 @@ st.markdown("""
     padding: 12px 16px;
     text-align: center;
     min-width: 110px;
-    font-family: monospace;
+    font-family: comic sans;
     font-size: 13px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
@@ -54,8 +54,7 @@ def kmeans_colors(pixels, k, max_iter=30):
     for i in range(k):
         r, g, b = int(centroids[i][0]), int(centroids[i][1]), int(centroids[i][2])
         pct = round(counts[i] / len(pixels) * 100)
-        result.append({"r": r, "g": g, "b": b, "pct": pct,
-                        "hex": f"#{r:02x}{g:02x}{b:02x}".upper()})
+        result.append({"r": r, "g": g, "b": b, "pct": pct,"hex": f"#{r:02x}{g:02x}{b:02x}".upper()})
     return sorted(result, key=lambda x: -x["pct"])
 
 uploaded = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "webp"])
@@ -86,7 +85,7 @@ if uploaded:
         cols = st.columns(len(colors))
         for i, c in enumerate(colors):
             brightness = 0.299*c["r"] + 0.587*c["g"] + 0.114*c["b"]
-            txt = "#1a1a1a" if brightness > 128 else "#f5f5f5"
+            txt = "#202424" if brightness > 128 else "#f5f5f5"
             with cols[i]:
                 st.markdown(f"""
                 <div style="background:{c['hex']}; border-radius:12px; padding:14px 10px;
@@ -101,4 +100,4 @@ if uploaded:
         st.caption("💡 Tip: Click any hex code above to copy it manually.")
 
 st.markdown("---")
-st.caption("Built with Streamlit · K-Means Clustering · Tugas AI Pertemuan #11")
+st.caption("Built with Streamlit_K-Means Clustering_Tugas 11_240034_Nena Haryadi P")
